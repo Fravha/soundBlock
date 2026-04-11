@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic-Minimal PWA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121212">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Mi Música</h1>
+            <label for="file-upload" class="custom-file-upload">
+                + Cargar Canciones
+            </label>
+            <input id="file-upload" type="file" accept="audio/*" multiple />
+        </header>
+
+        <main class="playlist-container">
+            <ul id="playlist" class="playlist">
+                </ul>
+        </main>
+
+        <footer class="player-controls">
+            <div class="current-track-info">
+                <p id="track-name">Selecciona una canción</p>
+            </div>
+            
+            <div class="controls-group">
+                <button id="btn-shuffle" class="control-btn" title="Aleatorio">🔀</button>
+                <button id="btn-play-pause" class="control-btn main-btn">▶️</button>
+                <button id="btn-next" class="control-btn">⏭️</button>
+            </div>
+
+            <audio id="audio-element"></audio>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log("Service Worker registrado"));
+        }
+    </script>
+</body>
+</html>
